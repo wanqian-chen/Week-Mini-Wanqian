@@ -1,3 +1,5 @@
+## Week 3 Mini Project
+
 ### Steps to run
 
 * `make format` to format the code
