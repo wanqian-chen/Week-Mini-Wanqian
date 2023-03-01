@@ -26,7 +26,9 @@ enum Commands {
 fn main() {
     let args = Cli::parse();
     // welcome message
+    println!("=====================================");
     println!("Welcome to the paper-scissors-rock game!");
+    println!("=====================================");
     // menu
     println!("Please choose your weapon: paper, scissors, or rock.");
     println!("To quit the game, type \"quit\".");
