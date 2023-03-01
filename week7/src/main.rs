@@ -1,5 +1,6 @@
 // a command-line tool to play paper-scissors-rock
 
+use std::io;
 use clap::Parser;
 
 #[derive(Parser)]
@@ -30,11 +31,16 @@ fn main() {
     println!("Please choose your weapon: paper, scissors, or rock.");
     println!("To quit the game, type \"quit\".");
     println!("=====================================");
-    match args.command {
-        Some(Commands::PaperScissorsRock { choice }) => {
-            let result = paper_scissors_rock::paper_scissors_rock(choice);
-            println!("{}", result);
-        }
-        None => println!("Something went wrong!"),
+    
+    // get the choice
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    let choice = input.trim().to_string();
+    // play the game
+    if choice == "quit" {
+        println!("You quit the game.");
+        return;
     }
+    let result = paper_scissors_rock::paper_scissors_rock(choice);
+    println!("{}", result);
 }

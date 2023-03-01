@@ -39,11 +39,8 @@ pub fn check_who_wins(choice1: &str, choice2: &str) -> String {
 
 // play the paper-scissors-rock game
 pub fn paper_scissors_rock(choice: String) -> String {
-    // if the choice is "quit"
-    if choice == "quit" {
-        return "Bye!".to_string();
-    }
     let random_choice = get_random_choice();
     let result = check_who_wins(&choice, &random_choice);
-    result
+    let output = format!("You chose {}. The computer chose {}. {}", choice, random_choice, result);
+    output
 }
