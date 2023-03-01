@@ -28,21 +28,32 @@ fn main() {
     // welcome message
     println!("=====================================");
     println!("Welcome to the paper-scissors-rock game!");
-    println!("=====================================");
-    // menu
-    println!("Please choose your weapon: paper, scissors, or rock.");
-    println!("To quit the game, type \"quit\".");
+    println!("To quit the game anytime, type \"quit\".");
     println!("=====================================");
     
-    // get the choice
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).unwrap();
-    let choice = input.trim().to_string();
-    // play the game
-    if choice == "quit" {
-        println!("You quit the game.");
-        return;
+    loop {
+        println!("Please choose your weapon: paper, scissors, or rock.");
+        // get the choice
+        let mut input = String::new();
+        std::io::stdin().read_line(&mut input).unwrap();
+        let choice = input.trim().to_string();
+        // play the game
+        if choice == "quit" {
+            println!("You quit the game.");
+            break;
+        }
+        let result = paper_scissors_rock::paper_scissors_rock(choice);
+        println!("{}", result);
+
+        // ask if want to continue
+        println!("Do you want to continue? (y/n)");
+        let mut input = String::new();
+        std::io::stdin().read_line(&mut input).unwrap();
+        let choice_continue = input.trim().to_string();
+        if choice_continue == "n" {
+            println!("You quit the game.");
+            break;
+        }
+        println!("=====================================");
     }
-    let result = paper_scissors_rock::paper_scissors_rock(choice);
-    println!("{}", result);
 }

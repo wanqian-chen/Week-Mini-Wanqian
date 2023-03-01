@@ -19,10 +19,9 @@ Then you will be asked to choose one of the three options: paper, scissors, or r
 ```bash
 =====================================
 Welcome to the paper-scissors-rock game!
+To quit the game anytime, type "quit".
 =====================================
 Please choose your weapon: paper, scissors, or rock.
-To quit the game, type "quit".
-=====================================
 ```
 
 And it will return the result of the game.
@@ -30,6 +29,15 @@ And it will return the result of the game.
 ```bash
 You chose scissors. The computer chose rock. Sorry! You lose!
 ```
+
+It will then ask if the user wants to play again.
+
+```bash
+Do you want to continue? (y/n)
+```
+
+y: continue the game
+n: quit the game
 
 ## References
 
