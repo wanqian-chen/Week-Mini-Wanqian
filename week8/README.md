@@ -40,6 +40,7 @@ And you can interact with your pet.
         5. instruct your pet to do something.
         
 To quit the game, type "quit".
+=====================================
 1
 You fed your dog john, and its food level is now 60.
 ```
@@ -56,6 +57,7 @@ If the dog is either too hungry or too dirty or too bored, it will ask you to fe
         5. instruct your pet to do something.
         
 To quit the game, type "quit".
+=====================================
 5
 Please enter the instruction.
 walk
