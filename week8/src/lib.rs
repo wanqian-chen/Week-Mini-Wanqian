@@ -24,7 +24,7 @@ pub fn init_pet(name: String, species: String) -> Pet {
 // feed a pet
 pub fn feed_pet(pet: &mut Pet) {
     // if food is less than 90, add 10
-    if pet.food < 90 {
+    if pet.food <= 90 {
         pet.food += 10;
     }
     // if food is more than 90, set food to 100
@@ -40,7 +40,7 @@ pub fn feed_pet(pet: &mut Pet) {
 // give a pet a bath
 pub fn give_pet_a_bath(pet: &mut Pet) {
     // if bath is less than 90, add 10
-    if pet.bath < 90 {
+    if pet.bath <= 90 {
         pet.bath += 10;
     }
     // if bath is more than 90, set bath to 100
@@ -56,7 +56,7 @@ pub fn give_pet_a_bath(pet: &mut Pet) {
 // play with a pet
 pub fn play_with_pet(pet: &mut Pet) {
     // if play is less than 90, add 10
-    if pet.play < 90 {
+    if pet.play <= 90 {
         pet.play += 10;
     }
     // if play is more than 90, set play to 100
