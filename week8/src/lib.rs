@@ -95,6 +95,7 @@ pub fn check_pet_status(pet: &mut Pet) {
     // otherwise, the pet is happy
     if pet.food >= 50 && pet.bath >= 50 && pet.play >= 50 {
         println!("Your {} {} is happy.", pet.species, pet.name);
+        println!("Your pet has food level {}, bath level {}, and play level {}.", pet.food, pet.bath, pet.play);
     }
 }
 
