@@ -1,16 +1,12 @@
 // a command-line tool to play pet-feeding
 
-use std::io;
 use clap::Parser;
+use std::io;
 
-use pet_feeding::{init_pet, feed_pet, give_pet_a_bath, play_with_pet, check_pet_status};
+use pet_feeding::{check_pet_status, feed_pet, give_pet_a_bath, init_pet, play_with_pet, instruct_pet};
 
 #[derive(Parser)]
-#[clap(
-    version = "1.0",
-    author = "Wanqian",
-    about = "Play pet-feeding"
-)]
+#[clap(version = "1.0", author = "Wanqian", about = "Play pet-feeding")]
 struct Cli {
     #[clap(subcommand)]
     command: Option<Commands>,
@@ -33,21 +29,33 @@ fn main() {
     println!("=====================================");
     println!("Welcome to the pet-feeding game!");
     println!("=====================================");
-    
+
     // initialize a pet
-    println!("Please enter your pet's name and species.");
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).unwrap();
-    let name = input.trim().to_string();
+    println!("Please choose a species for your pet:");
+    println!("You can type \"dog\", \"cat\", \"bird\", or \"fish\". Or other species you like.");
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
     let species = input.trim().to_string();
+    println!("Please enter a name for your pet:");
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    let name = input.trim().to_string();
     let mut pet = init_pet(name, species);
-    println!("You have a pet named {} and it is a {}.", pet.name, pet.species);
+    println!(
+        "You have a pet named {} and it is a {}.",
+        pet.name, pet.species
+    );
     println!("=====================================");
-    
+
     loop {
-        println!("Please choose an action: 1. feed, 2. bath, 3. play, 4. check status, 5. instruct your pet to do something.");
+        println!("
+        Please choose an action: 
+        1. feed, 
+        2. bath, 
+        3. play, 
+        4. check status, 
+        5. instruct your pet to do something.
+        ");
         println!("To quit the game, type \"quit\".");
         // get the choice
         let mut input = String::new();
@@ -59,33 +67,24 @@ fn main() {
             break;
         }
         if choice == "1" {
-            pet = feed_pet(pet);
+            feed_pet(&mut pet);
         } else if choice == "2" {
-            pet = give_pet_a_bath(pet);
+            give_pet_a_bath(&mut pet);
         } else if choice == "3" {
-            pet = play_with_pet(pet);
+            play_with_pet(&mut pet);
         } else if choice == "4" {
-            check_pet_status(pet);
+            check_pet_status(&mut pet);
         } else if choice == "5" {
-            println!("Please enter what you want your pet to do.");
+            println!("Please enter the instruction.");
             let mut input = String::new();
             std::io::stdin().read_line(&mut input).unwrap();
-            let action = input.trim().to_string();
-            pet = pet.do_something(action);
-        } else {
-            println!("Invalid choice.");
+            let instruction = input.trim().to_string();
+            instruct_pet(&mut pet, instruction);
+        }
+        else {
+            println!("Invalid input.");
         }
 
-        // ask if want to continue
-        println!("Do you want to continue? (y/n)");
-        let mut input = String::new();
-        std::io::stdin().read_line(&mut input).unwrap();
-        let choice_continue = input.trim().to_string();
-        if choice_continue == "n" {
-            println!("You quit the game.");
-            break;
-        }
         println!("=====================================");
     }
 }
-
