@@ -57,7 +57,7 @@ fn main() {
         5. instruct your pet to do something.
         ");
         println!("To quit the game, type \"quit\".");
-        println!("=====================================");
+        println!("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
         // get the choice
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
