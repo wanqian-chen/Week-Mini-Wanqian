@@ -1,5 +1,5 @@
 [package]
-name = "paper_scissors_rock"
+name = "caffeine_calculator"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 clap = {version="4.0.32", features=["derive"]}
-rand = "0.8.4"
+lazy_static = "1.4.0"
