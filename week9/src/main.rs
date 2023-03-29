@@ -1,13 +1,13 @@
-// a command-line tool to play paper-scissors-rock
+// a command-line tool to do math
 
-use std::io;
+use math::*;
 use clap::Parser;
 
 #[derive(Parser)]
 #[clap(
     version = "1.0",
     author = "Wanqian",
-    about = "Play paper-scissors-rock"
+    about = "Math command-line tool"
 )]
 struct Cli {
     #[clap(subcommand)]
@@ -17,43 +17,30 @@ struct Cli {
 #[derive(Parser)]
 enum Commands {
     #[clap(version = "1.0", author = "Wanqian")]
-    PaperScissorsRock {
+    Math {
         #[clap(short, long)]
-        choice: String,
+        first: f64,
+        #[clap(short, long)]
+        second: f64,
+        #[clap(short, long)]
+        operator: String,
     },
 }
 
 fn main() {
     let args = Cli::parse();
-    // welcome message
-    println!("=====================================");
-    println!("Welcome to the paper-scissors-rock game!");
-    println!("To quit the game anytime, type \"quit\".");
-    println!("=====================================");
     
-    loop {
-        println!("Please choose your weapon: paper, scissors, or rock.");
-        // get the choice
-        let mut input = String::new();
-        std::io::stdin().read_line(&mut input).unwrap();
-        let choice = input.trim().to_string();
-        // play the game
-        if choice == "quit" {
-            println!("You quit the game.");
-            break;
-        }
-        let result = paper_scissors_rock::paper_scissors_rock(choice);
-        println!("{}", result);
-
-        // ask if want to continue
-        println!("Do you want to continue? (y/n)");
-        let mut input = String::new();
-        std::io::stdin().read_line(&mut input).unwrap();
-        let choice_continue = input.trim().to_string();
-        if choice_continue == "n" {
-            println!("You quit the game.");
-            break;
-        }
-        println!("=====================================");
+    match args.command {
+        Some(Commands::Math { first, second, operator }) => {
+            let result = match operator.as_str() {
+                "+" => add(first, second),
+                "-" => subtract(first, second),
+                "*" => multiply(first, second),
+                "/" => divide(first, second),
+                _ => panic!("Invalid operator"),
+            };
+            println!("{} {} {} = {}", first, operator, second, result);
+        },
+        None => println!("No command"),
     }
 }
