@@ -49,7 +49,7 @@ What would you like to do next?
 4. List today's tasks -> today
 5. Quit -> quit
 ==============================
-add pay-bill 2023-04-07
+add pay-bill 2023-04-02
 ```
 
 To list all tasks:
@@ -58,7 +58,7 @@ To list all tasks:
 ==============================
 list
 0. go-to-work 2023-04-01. 
-1. pay-bill 2023-04-07. 
+1. pay-bill 2023-04-02. 
 ==============================
 ```
 
@@ -67,7 +67,7 @@ To list today's tasks:
 ```bash
 ==============================
 today
-1. pay-bill 2023-04-07. 
+1. pay-bill 2023-04-02. 
 ==============================
 ```
 
@@ -82,7 +82,7 @@ done 0
 ```bash
 ==============================
 list
-0. pay-bill 2023-04-07. 
+0. pay-bill 2023-04-02. 
 ==============================
 ```
 
