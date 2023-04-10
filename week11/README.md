@@ -48,6 +48,14 @@ Total: 18
 ====================
 ```
 
+To quit:
+
+```bash
+====================
+quit
+```
+
+
 ## References
 
 * [rust-cli-template](https://github.com/kbknapp/rust-cli-template)
